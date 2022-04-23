@@ -1,0 +1,81 @@
+{
+  "name": "@vodyani/transformer",
+  "license": "MIT",
+  "version": "0.0.1",
+  "author": "ChoGathK",
+  "description": "🗞 provides easy to use conversion methods and decorators.",
+  "homepage": "https://github.com/vodyani/transformer#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vodyani/transformer.git"
+  },
+  "keywords": [
+    "vodyani",
+    "nodejs",
+    "transformer",
+    "conversion",
+    "javascript",
+    "typescript",
+    "npm-package"
+  ],
+  "bugs": {
+    "url": "https://github.com/vodyani/transformer/issues"
+  },
+  "files": [
+    "package.json",
+    "README.MD",
+    "LICENSE",
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "scripts": {
+    "patch": "npm version patch",
+    "minor": "npm version minor",
+    "major": "npm version major",
+    "install:all": "npm i && npm i @vodyani/eslint-config -D && npx husky install",
+    "build": "rm -rf dist && tsc",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint ./src ./test && tsc",
+    "lint:fix": "eslint --fix --ext .ts src/ test/",
+    "lint:html-report": "eslint ./src ./test -f html -o eslint-report.html",
+    "lint:json-report": "eslint ./src ./test -f json -o eslint-report.json"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "@vodyani"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testRegex": "(/test/.spec.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleNameMapper": {
+      "@/(.*)$": "<rootDir>/src/$1"
+    },
+    "transform": {
+      "^.+\\.js$": "babel-jest",
+      "^.+\\.ts$": "ts-jest"
+    },
+    "transformIgnorePatterns": [
+      "./node_modules/(?!(lodash-es|other-es-lib))"
+    ]
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "16.2.3",
+    "@commitlint/config-conventional": "16.2.1",
+    "@types/jest": "27.4.1",
+    "@types/lodash": "^4.14.181",
+    "@types/node": "16.11.26",
+    "@vodyani/eslint-config": "^1.0.9",
+    "husky": "7.0.4",
+    "jest": "27.5.1",
+    "ts-jest": "27.1.4",
+    "typescript": "4.6.3"
+  }
+}
