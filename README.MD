@@ -1,4 +1,4 @@
-# Vodyani core
+# Vodyani transformer
 
 *🗞 provides easy to use conversion methods and decorators.*
 
@@ -26,4 +26,4 @@ npm install @vodyani/transformer
 
 ## License
 
-Vodyani core is [MIT licensed](LICENSE).
+Vodyani transformer is [MIT licensed](LICENSE).
