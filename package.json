@@ -1,9 +1,9 @@
 {
   "name": "@vodyani/transformer",
   "license": "MIT",
-  "version": "0.0.1",
+  "version": "0.5.1",
   "author": "ChoGathK",
-  "description": "🗞 provides easy to use conversion methods and decorators.",
+  "description": "🗞 provides easy to use transform methods and decorators.",
   "homepage": "https://github.com/vodyani/transformer#readme",
   "repository": {
     "type": "git",
@@ -64,13 +64,20 @@
     ]
   },
   "dependencies": {
-    "lodash": "^4.17.21"
+    "class-transformer": "0.5.1",
+    "lodash": "4.17.21",
+    "reflect-metadata": "0.1.13"
+  },
+  "peerDependencies": {
+    "class-transformer": "0.5.1",
+    "reflect-metadata": "0.1.13"
   },
   "devDependencies": {
     "@commitlint/cli": "16.2.3",
     "@commitlint/config-conventional": "16.2.1",
+    "@nestjs/swagger": "^5.2.1",
     "@types/jest": "27.4.1",
-    "@types/lodash": "^4.14.181",
+    "@types/lodash": "4.14.182",
     "@types/node": "16.11.28",
     "@vodyani/eslint-config": "^1.0.9",
     "husky": "7.0.4",
