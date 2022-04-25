@@ -22,6 +22,8 @@ npm install @vodyani/transformer
 
 ## Dependencies
 
+- [reflect-metadata](https://github.com/rbuckton/reflect-metadata) `v0.1`
+- [class-validator](https://github.com/typestack/class-validator) `v0.5`
 - [lodash](https://github.com/lodash/lodash) `v4`
 
 ## License
