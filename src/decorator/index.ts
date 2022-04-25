@@ -1,2 +1,3 @@
-export * from './param';
-export * from './result';
+export * from './class-assemble';
+export * from './class-type';
+export * from './deep';
