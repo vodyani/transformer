@@ -13,7 +13,7 @@ export function Assemble(type: Class, options?: ClassTransformOptions) {
       const result = method.apply(this, args);
 
       return isPromise(result)
-        ? result.then((it: object | any[]) => classAssemble(type, it, options))
+        ? result.then((it: object) => classAssemble(type, it, options))
         : classAssemble(type, result, options);
     };
 

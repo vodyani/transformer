@@ -6,7 +6,7 @@
 [![Npm](https://img.shields.io/npm/dm/@vodyani/transformer)](https://www.npmjs.com/package/@vodyani/transformer)
 [![License](https://img.shields.io/github/license/vodyani/transformer)](LICENSE)
 ![Workflow](https://github.com/vodyani/transformer/actions/workflows/release.yml/badge.svg)
-[![codecov](https://codecov.io/gh/vodyani/transformer/branch/main/graph/badge.svg?token=YHBHSZH5PB)](https://codecov.io/gh/vodyani/transformer)
+[![codecov](https://codecov.io/gh/vodyani/transformer/branch/master/graph/badge.svg?token=DZBE5JU3YA)](https://codecov.io/gh/vodyani/transformer)
 [![Known Vulnerabilities](https://snyk.io/test/github/vodyani/transformer/badge.svg?targetFile=package.json)](https://snyk.io/test/github/vodyani/transformer?targetFile=package.json)
 
 ## Installation
