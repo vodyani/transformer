@@ -3,7 +3,7 @@
   "license": "MIT",
   "version": "0.5.1",
   "author": "ChoGathK",
-  "description": "🗞 provides easy to use conversion methods and decorators.",
+  "description": "🗞 provides easy to use transform methods and decorators.",
   "homepage": "https://github.com/vodyani/transformer#readme",
   "repository": {
     "type": "git",
