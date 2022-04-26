@@ -4,8 +4,9 @@
 import 'reflect-metadata';
 
 import { isMap, isSet } from 'lodash';
-import { Expose, Exclude, Type } from 'class-transformer';
+import { PickType } from '@nestjs/swagger';
 import { describe, it, expect } from '@jest/globals';
+import { Expose, Exclude, Type } from 'class-transformer';
 
 import { classAssemble, convertNumber, convertString, Assemble, ValueTransform, MapTransform, SetTransform } from '../src';
 
@@ -15,6 +16,8 @@ class User {
   // @ts-ignore
   @Expose() @ValueTransform(convertNumber) public age: number;
 }
+
+class PartOfUser extends PickType(User, ['age']) {}
 
 class ExcludeDemo {
   // @ts-ignore
@@ -80,5 +83,12 @@ describe('test class', () => {
     );
 
     expect(result).toEqual({ other: 2, name: '' });
+
+    const result2 = classAssemble(
+      PartOfUser,
+      {},
+    );
+
+    expect(result2).toEqual({ age: 0 });
   });
 });
