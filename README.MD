@@ -1,32 +1,32 @@
 # Vodyani transformer
 
-*🗞 provides easy to use conversion methods and decorators.*
+⚗ "transformer" provides easy to use conversion methods and decorators.
 
-[![Npm](https://img.shields.io/npm/v/@vodyani/transformer)](https://www.npmjs.com/package/@vodyani/transformer)
+[![Npm](https://img.shields.io/npm/v/@vodyani/transformer/latest.svg)](https://www.npmjs.com/package/@vodyani/transformer)
+[![Npm](https://img.shields.io/npm/v/@vodyani/transformer/beta.svg)](https://www.npmjs.com/package/@vodyani/transformer)
 [![Npm](https://img.shields.io/npm/dm/@vodyani/transformer)](https://www.npmjs.com/package/@vodyani/transformer)
 [![License](https://img.shields.io/github/license/vodyani/transformer)](LICENSE)
-![Workflow](https://github.com/vodyani/transformer/actions/workflows/release.yml/badge.svg)
+<br>
 [![codecov](https://codecov.io/gh/vodyani/transformer/branch/master/graph/badge.svg?token=DZBE5JU3YA)](https://codecov.io/gh/vodyani/transformer)
-[![Known Vulnerabilities](https://snyk.io/test/github/vodyani/transformer/badge.svg?targetFile=package.json)](https://snyk.io/test/github/vodyani/transformer?targetFile=package.json)
+![Workflow](https://github.com/vodyani/transformer/actions/workflows/release.yml/badge.svg)
+[![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
 ## Installation
-
-> [Get started with documentation](https://vodyani.vercel.app/docs/advanced/transformer)
 
 ```sh
 npm install @vodyani/transformer
 ```
 
-## Recommendations
+## Usage
 
-- typescript `v4.6.x`
-- node.js `v12.x` ~ `v16.x`
+|Features|Type|Description|
+|:-:|:-:|:-:|
 
-## Dependencies
+## Team
 
-- [class-transformer](https://github.com/typestack/class-transformer) `v0.5`
-- [reflect-metadata](https://github.com/rbuckton/reflect-metadata) `v0.1`
-- [lodash](https://github.com/lodash/lodash) `v4`
+|[![ChoGathK](https://github.com/chogathK.png?size=100)](https://github.com/chogathK)|
+|:-:|
+|[ChoGathK](https://github.com/chogathK)|
 
 ## License
 

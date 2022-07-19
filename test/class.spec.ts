@@ -8,13 +8,13 @@ import { PickType } from '@nestjs/swagger';
 import { describe, it, expect } from '@jest/globals';
 import { Expose, Exclude, Type } from 'class-transformer';
 
-import { classAssemble, convertNumber, convertString, Assemble, ValueTransform, MapTransform, SetTransform } from '../src';
+import { toAssemble, convertNumber, convertString, Assemble, TransformValue, TransformMap, TransformSet } from '../src';
 
 class User {
   // @ts-ignore
   @Expose() public name: string;
   // @ts-ignore
-  @Expose() @ValueTransform(convertNumber) public age: number;
+  @Expose() @TransformValue(convertNumber) public age: number;
 }
 
 class PartOfUser extends PickType(User, ['age']) {}
@@ -25,7 +25,7 @@ class ExcludeDemo {
   // @ts-ignore
   @Exclude() password: string;
   // @ts-ignore
-  @Expose() @ValueTransform(convertString) name: string;
+  @Expose() @TransformValue(convertString) name: string;
 }
 
 class Demo {
@@ -34,9 +34,9 @@ class Demo {
   // @ts-ignore
   @Expose() @Type(() => User) public userArray: User[];
   // @ts-ignore
-  @Expose() @SetTransform(User) public userSet: Set<User>;
+  @Expose() @TransformSet(User) public userSet: Set<User>;
   // @ts-ignore
-  @Expose() @MapTransform(User) public userMap: Map<string, User>;
+  @Expose() @TransformMap(User) public userMap: Map<string, User>;
 }
 
 class Service {
@@ -75,8 +75,8 @@ describe('test class', () => {
     expect(result).toEqual({ name: '' });
   });
 
-  it('classAssemble', async () => {
-    const result = classAssemble(
+  it('toAssemble', async () => {
+    const result = toAssemble(
       ExcludeDemo,
       { password: '123', other: 2 },
       { excludeExtraneousValues: false },
@@ -84,7 +84,7 @@ describe('test class', () => {
 
     expect(result).toEqual({ other: 2, name: '' });
 
-    const result2 = classAssemble(
+    const result2 = toAssemble(
       PartOfUser,
       {},
     );

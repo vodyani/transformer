@@ -1,3 +1,3 @@
-export * from './class-assemble';
-export * from './class-type';
-export * from './deep';
+export * from './assemble';
+export * from './convert';
+export * from './object';

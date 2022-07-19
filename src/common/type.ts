@@ -1,2 +1,4 @@
-export type FunctionType<T = any> = (...args: any[]) => T;
-export type PromiseType<T = any> = (...args: any[]) => Promise<T>;
+/** The function method. */
+export type Method<T = any> = (...args: any[]) => T;
+/** The promise method. */
+export type PromiseMethod<T = any> = (...args: any[]) => Promise<T>;
