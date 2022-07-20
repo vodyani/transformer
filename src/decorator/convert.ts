@@ -4,7 +4,7 @@ import { toAssemble } from '../method';
 import { Class, Method } from '../common';
 
 /**
- * The transformation of the data.
+ * The transformation decorator of the data.
  *
  * @see [@Transform](https://github.com/typestack/class-transformer#basic-usage)
  *
@@ -16,7 +16,11 @@ export function TransformValue(transformer: Method, ...args: []) {
   return Transform(({ value }) => transformer(value, ...args));
 }
 /**
- * The transformation of the `Set` data.
+ * The transformation decorator of the `Set` data.
+ *
+ * @tips
+ * - It doesn't need to be used with [`@Type`](https://github.com/typestack/class-transformer#%D1%81onverting-date-strings-into-date-objects).
+ * - Because the `@Type` decorator does not properly convert nested structures in `Set`.
  *
  * @see [ClassTransformOptions](https://github.com/typestack/class-transformer#advanced-usage)
  *
@@ -35,7 +39,11 @@ export function TransformSet(type: Class, options?: ClassTransformOptions) {
   });
 }
 /**
- * The transformation of the `Map` data.
+ * The transformation decorator of the `Map` data.
+ *
+ * @tips
+ * - It doesn't need to be used with [`@Type`](https://github.com/typestack/class-transformer#%D1%81onverting-date-strings-into-date-objects).
+ * - Because the `@Type` decorator does not properly convert nested structures in `Map`.
  *
  * @see [ClassTransformOptions](https://github.com/typestack/class-transformer#advanced-usage)
  *

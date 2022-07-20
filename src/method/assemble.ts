@@ -15,7 +15,7 @@ import { toDeepMerge } from './object';
  *
  * @publicApi
  */
-export function toAssemble(type: Class, data: object, options?: ClassTransformOptions) {
+export function toAssemble(type: Class, data?: object, options?: ClassTransformOptions) {
   const AssembleOptions = toDeepMerge({ excludeExtraneousValues: true }, options);
-  return plainToClass(type, data, AssembleOptions);
+  return plainToClass(type, (data || {}), AssembleOptions);
 }

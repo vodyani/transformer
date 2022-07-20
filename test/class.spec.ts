@@ -90,5 +90,18 @@ describe('test class', () => {
     );
 
     expect(result2).toEqual({ age: 0 });
+
+    class User2 {
+      // @ts-ignore
+      @Expose() @TransformValue((name: string) => toString(name, 'demo')) public name: string;
+      // @ts-ignore
+      @Expose() @TransformValue(toNumber) public age: number;
+      // @ts-ignore
+      @Expose() public setData: Set<string>;
+      // @ts-ignore
+      @Expose() public arrayData: Array<string>;
+    }
+
+    expect(toAssemble(User2)).toEqual({ name: 'demo', age: 0 });
   });
 });

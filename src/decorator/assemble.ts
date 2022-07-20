@@ -9,6 +9,7 @@ import { Class, Method } from '../common';
  * Following the function's successful completion, the result is automatically loaded using the class that was supplied.
  *
  * @tips This decorator should only be used if the return value is specified.
+ *
  * @see [ClassTransformOptions](https://github.com/typestack/class-transformer#advanced-usage)
  *
  * @param type The intended class for conversion.
