@@ -201,7 +201,7 @@ The transformation decorator of the data. `@TransformValue` actually calls the [
 import { Expose, TransformValue, toNumber } from '@vodyani/transformer'
 
 class User {
-  @Expose() @TransformValue((name: string) => name || 'demo')
+  @Expose() @TransformValue((name: string) => toString('demo'))
   public name: string;
 
   @Expose() @TransformValue(toNumber)
