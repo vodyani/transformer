@@ -7,6 +7,10 @@ import { ConvertOptions } from '../common';
 /**
  * The function that performs the transformation.
  *
+ * There are two outcomes that return the `replaced`.
+ *
+ * Either the condition fails and `replaced` is passed in, or the value is null.
+ *
  * @param data Data that needs to be transformed.
  * @param options Options in transformation processing.
  * @returns `T` | `any`
@@ -16,11 +20,12 @@ import { ConvertOptions } from '../common';
 export function toConvert<T = any>(data: any, options?: ConvertOptions): T {
   const { condition, transformer, replaced } = options || Object();
 
-  return isNil(data) && replaced
-    ? replaced
-    : condition && condition(data)
-      ? transformer(data)
-      : null;
+  if (condition) {
+    if (transformer && condition(data)) return transformer(data);
+    if (!isNil(replaced)) return replaced;
+  }
+
+  return isNil(data) && !isNil(replaced) ? replaced : data;
 }
 /**
  * Convert data to string.

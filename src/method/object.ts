@@ -5,7 +5,6 @@ import {
   isMap,
   isNil,
   isObject,
-  isSet,
   kebabCase,
   lowerCase,
   lowerFirst,
@@ -50,6 +49,8 @@ export function toDeepMerge(base: any, source: any) {
 export function toDeepConvertProperty(data: any, transformer: Method<string>): any {
   if (isNil(data)) return data;
 
+  let result = null;
+
   const pipe = [
     {
       isAllowUse: isArray(data),
@@ -58,18 +59,10 @@ export function toDeepConvertProperty(data: any, transformer: Method<string>): a
       },
     },
     {
-      isAllowUse: isSet(data),
-      use: () => {
-        const result = new Set();
-        (data as Set<any>).forEach((e: any) => result.add(toDeepConvertProperty(e, transformer)));
-        return result;
-      },
-    },
-    {
       isAllowUse: isMap(data),
       use: () => {
         const result = new Map();
-        (data as Map<any, any>).forEach((v, k) => result.set(toDeepConvertProperty(k, transformer), toDeepConvertProperty(v, transformer)));
+        (data as Map<any, any>).forEach((v, k) => result.set(transformer(k), v));
         return result;
       },
     },
@@ -86,8 +79,15 @@ export function toDeepConvertProperty(data: any, transformer: Method<string>): a
   ];
 
   for (const { isAllowUse, use } of pipe) {
-    return isAllowUse ? use() : data;
+    if (isAllowUse) {
+      result = use();
+      break;
+    }
+
+    result = data;
   }
+
+  return result;
 }
 /**
  * Formatting properties of the object structure in the data.

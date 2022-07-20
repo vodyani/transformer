@@ -1,6 +1,6 @@
 # Vodyani transformer
 
-⚗ "transformer" provides easy to use conversion methods and decorators.
+⚗ "transformer" offered simple-to-use decorators and conversion mechanisms.
 
 [![Npm](https://img.shields.io/npm/v/@vodyani/transformer/latest.svg)](https://www.npmjs.com/package/@vodyani/transformer)
 [![Npm](https://img.shields.io/npm/v/@vodyani/transformer/beta.svg)](https://www.npmjs.com/package/@vodyani/transformer)

@@ -8,13 +8,13 @@ import { PickType } from '@nestjs/swagger';
 import { describe, it, expect } from '@jest/globals';
 import { Expose, Exclude, Type } from 'class-transformer';
 
-import { toAssemble, convertNumber, convertString, Assemble, TransformValue, TransformMap, TransformSet } from '../src';
+import { toAssemble, toNumber, toString, Assemble, TransformValue, TransformMap, TransformSet } from '../src';
 
 class User {
   // @ts-ignore
   @Expose() public name: string;
   // @ts-ignore
-  @Expose() @TransformValue(convertNumber) public age: number;
+  @Expose() @TransformValue(toNumber) public age: number;
 }
 
 class PartOfUser extends PickType(User, ['age']) {}
@@ -25,7 +25,7 @@ class ExcludeDemo {
   // @ts-ignore
   @Exclude() password: string;
   // @ts-ignore
-  @Expose() @TransformValue(convertString) name: string;
+  @Expose() @TransformValue(toString) name: string;
 }
 
 class Demo {
@@ -47,13 +47,13 @@ class Service {
     const userArray = [{ age: '20' }];
     const userSet = new Set([{ name: 'vodyani', age: '20' }]);
     const userMap = new Map([['vodyani', { age: '20' }]]);
-    return { user, userArray, userSet, userMap } as any;
+    return Object({ user, userArray, userSet, userMap });
   }
 
   @Assemble(ExcludeDemo)
   // @ts-ignore
   public getExcludeDemo(): ExcludeDemo {
-    return { password: '123' } as any;
+    return Object({ password: '123' });
   }
 }
 

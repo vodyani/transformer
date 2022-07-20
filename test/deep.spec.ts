@@ -2,31 +2,54 @@
 import { describe, it, expect } from '@jest/globals';
 
 import {
-  toDeepCamelCase, toDeepSnakeCase, toDeepMerge,
-  ParamCameCase, ParamSnakeCase, ResultCameCase, ResultSnakeCase,
+  toDeepCamelCase,
+  toDeepSnakeCase,
+  toDeepMerge,
+  toDeepKebabCase,
+  toDeepCapitalize,
+  toDeepLowerCase,
+  toDeepLowerFirst,
+  toDeepUpperCase,
+  toDeepUpperFirst,
+  toDeepLower,
+  toDeepUpper,
+  TransformArgument,
+  TransformResult,
 } from '../src';
 
 class Demo {
   // @ts-ignore
-  @ParamCameCase ParamCameCase(data: object) { return data }
+  @TransformArgument(toDeepCamelCase) ParamCameCase(data: object) { return data }
   // @ts-ignore
-  @ParamSnakeCase async ParamSnakeCase(data: object) { return data }
+  @TransformArgument(toDeepSnakeCase) async ParamSnakeCase(data: object) { return data }
   // @ts-ignore
-  @ResultCameCase async ResultCameCase() { return { test_result: 1 } }
+  @TransformResult(toDeepCamelCase) async ResultCameCase() { return { test_result: 1 } }
   // @ts-ignore
-  @ResultSnakeCase async ResultSnakeCase() { return { testResult: 1 } }
+  @TransformResult(toDeepSnakeCase) async ResultSnakeCase() { return { testResult: 1 } }
   // @ts-ignore
-    @ResultCameCase ResultCameCase1() { return { test_result: 1 } }
-    // @ts-ignore
-  @ResultSnakeCase ResultSnakeCase1() { return { testResult: 1 } }
+  @TransformResult(toDeepCamelCase) ResultCameCase1() { return { test_result: 1 } }
   // @ts-ignore
-  @ResultCameCase async Error2() { throw new Error('test') }
+  @TransformResult(toDeepSnakeCase) ResultSnakeCase1() { return { testResult: 1 } }
   // @ts-ignore
-  @ResultSnakeCase async Error3() { throw new Error('test') }
+  @TransformResult(toDeepCamelCase) async Error2() { throw new Error('test') }
   // @ts-ignore
-  @ParamCameCase Error4() { throw new Error('test') }
+  @TransformResult(toDeepSnakeCase) async Error3() { throw new Error('test') }
   // @ts-ignore
-  @ParamSnakeCase Error5() { throw new Error('test') }
+  @TransformArgument(toDeepCapitalize) Error4() { throw new Error('test') }
+  // @ts-ignore
+  @TransformArgument(toDeepKebabCase) Error5() { throw new Error('test') }
+  // @ts-ignore
+  @TransformArgument(toDeepUpper) Error6() { throw new Error('test') }
+  // @ts-ignore
+  @TransformArgument(toDeepLower) Error7() { throw new Error('test') }
+  // @ts-ignore
+  @TransformArgument(toDeepUpperFirst) Error8() { throw new Error('test') }
+  // @ts-ignore
+  @TransformArgument(toDeepUpperCase) Error9() { throw new Error('test') }
+  // @ts-ignore
+  @TransformArgument(toDeepLowerCase) Error10() { throw new Error('test') }
+  // @ts-ignore
+  @TransformArgument(toDeepLowerFirst) Error11() { throw new Error('test') }
 }
 
 describe('test deep', () => {
@@ -37,6 +60,12 @@ describe('test deep', () => {
     expect(toDeepCamelCase({ 'user-id': 1 }).userId).toBe(1);
     expect(toDeepCamelCase([{ 'user-id': 1 }])[0].userId).toBe(1);
     expect(toDeepCamelCase([{ 'user-id': [{ 'USER_ID': 2 }] }])[0].userId[0].userId).toBe(2);
+
+    const data = { map: new Map() };
+    data.map.set('USER_ID', 1);
+
+    expect(toDeepCamelCase(data).map.get('userId')).toBe(1);
+    expect(toDeepCamelCase(null)).toBe(null);
   });
 
   it('toDeepSnakeCase', async () => {
@@ -132,7 +161,6 @@ describe('test deep', () => {
     resultMap.set(1, 1);
     resultMap.set(2, 2);
     expect(toDeepMerge(baseMap, sourceMap)).toEqual(resultMap);
-
     expect(toDeepMerge({ foo: ['a', 'b', 'c'] }, { foo: ['d'] })).toEqual({ foo: ['a', 'b', 'c', 'd'] });
   });
 });
@@ -175,6 +203,36 @@ describe('decorator', () => {
     }
     try {
       demo.Error5();
+    } catch (error) {
+      expect(error).toBeInstanceOf(Error);
+    }
+    try {
+      demo.Error6();
+    } catch (error) {
+      expect(error).toBeInstanceOf(Error);
+    }
+    try {
+      demo.Error7();
+    } catch (error) {
+      expect(error).toBeInstanceOf(Error);
+    }
+    try {
+      demo.Error8();
+    } catch (error) {
+      expect(error).toBeInstanceOf(Error);
+    }
+    try {
+      demo.Error9();
+    } catch (error) {
+      expect(error).toBeInstanceOf(Error);
+    }
+    try {
+      demo.Error10();
+    } catch (error) {
+      expect(error).toBeInstanceOf(Error);
+    }
+    try {
+      demo.Error11();
     } catch (error) {
       expect(error).toBeInstanceOf(Error);
     }
