@@ -25,9 +25,10 @@ npm install @vodyani/transformer
 
 ## Class transformer usage
 
-> Before you start using it, you need to understand some basic concepts 😄
+> - Before you start using it, you need to understand some basic concepts 😄
+> - The transformation capability of the class is implemented based on the [class-transformer](https://github.com/typestack/class-transformer) package.
 
-> The transformation capability of the class is implemented based on the [class-transformer](https://github.com/typestack/class-transformer) package.
+<br>
 
 Because `excludeExtraneousValues` is enabled by default. you needs import [`@Expose`](https://github.com/typestack/class-transformer#using-versioning-to-control-exposed-and-excluded-properties) To mark whether the property needs to be assembled.
 
