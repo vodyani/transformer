@@ -3,10 +3,9 @@ import { isPromise } from 'util/types';
 import { Method } from '../common';
 
 /**
- * After the function is finished, the result of the function execution is changed by passing in a transformer.
+ * A transformer is passed in after the function has completed execution to change the function's output.
  *
- * @param transformer The transition function.
- * @returns TypedPropertyDescriptor<Method<any>>
+ * @param transformer The process that carries out the transition.
  *
  * @publicApi
  */
@@ -23,10 +22,9 @@ export function TransformResult(transformer: Method) {
   };
 }
 /**
- * Before the function is executed, the arguments of the function are changed through the passed transformer.
+ * The function's arguments are modified using the passed transformer before the function is called.
  *
- * @param transformer The transition function.
- * @returns TypedPropertyDescriptor<Method<any>>
+ * @param transformer The process that carries out the transition.
  *
  * @publicApi
  */

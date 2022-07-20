@@ -6,15 +6,13 @@ import { toAssemble } from '../method';
 import { Class, Method } from '../common';
 
 /**
- * After the function completes execution, the result is automatically loaded based on the class passed in.
+ * Following the function's successful completion, the result is automatically loaded using the class that was supplied.
  *
- * It is recommended to use this decorator only if you specify the return value!
- *
+ * @tips This decorator should only be used if the return value is specified.
  * @see [ClassTransformOptions](https://github.com/typestack/class-transformer#advanced-usage)
  *
- * @param type The class.
- * @param options The class-transformer options, `excludeExtraneousValues` is enabled by default.
- * @returns PropertyDecorator
+ * @param type The intended class for conversion.
+ * @param options The class-transformer options. (`excludeExtraneousValues` is enabled by default)
  *
  * @publicApi
  */

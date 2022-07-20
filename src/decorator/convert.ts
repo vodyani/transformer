@@ -4,12 +4,11 @@ import { toAssemble } from '../method';
 import { Class, Method } from '../common';
 
 /**
- * The data transformation.
+ * The transformation of the data.
  *
  * @see [@Transform](https://github.com/typestack/class-transformer#basic-usage)
  *
- * @param transformer The function that performs the transformation.
- * @returns PropertyDecorator
+ * @param transformer the process that carries out the transition.
  *
  * @publicApi
  */
@@ -17,13 +16,12 @@ export function TransformValue(transformer: Method, ...args: []) {
   return Transform(({ value }) => transformer(value, ...args));
 }
 /**
- * Set data transformation.
+ * The transformation of the `Set` data.
  *
  * @see [ClassTransformOptions](https://github.com/typestack/class-transformer#advanced-usage)
  *
- * @param type The class.
- * @param options The class-transformer options, `excludeExtraneousValues` is enabled by default.
- * @returns PropertyDecorator
+ * @param type The intended class for conversion.
+ * @param options The class-transformer options. (`excludeExtraneousValues` is enabled by default)
  *
  * @publicApi
  */
@@ -37,13 +35,12 @@ export function TransformSet(type: Class, options?: ClassTransformOptions) {
   });
 }
 /**
- * Map data transformation.
+ * The transformation of the `Map` data.
  *
  * @see [ClassTransformOptions](https://github.com/typestack/class-transformer#advanced-usage)
  *
- * @param type The class.
- * @param options The class-transformer options, `excludeExtraneousValues` is enabled by default.
- * @returns PropertyDecorator
+ * @param type The intended class for conversion.
+ * @param options The class-transformer options. (`excludeExtraneousValues` is enabled by default)
  *
  * @publicApi
  */

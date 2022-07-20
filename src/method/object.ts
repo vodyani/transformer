@@ -20,15 +20,15 @@ import { isDictionary } from '@vodyani/utils';
 import { Method } from '../common';
 
 /**
- * The two incoming data are compared and deeply merged.
+ * Deep comparison and fusion are performed on the two incoming data.
+ *
+ * @tips `base` will be deeply copied before merging, so it will not be changed.
  *
  * @param base The underlying data being compared.
  * @param source New data merged into the underlying data.
  * @returns `T` | `any`
  *
  * @publicApi
- *
- * @tips `base` will be deeply copied before merging, so it will not be changed.
  */
 export function toDeepMerge(base: any, source: any) {
   if (!isNil(base) && !!isNil(source)) return base;
@@ -36,9 +36,9 @@ export function toDeepMerge(base: any, source: any) {
   return deepmerge(base, source);
 }
 /**
- * Formatting properties of the object structure in the data.
+ * Formatting properties of the object in the data.
  *
- * @param data The data source.
+ * @param data The source of data conversion.
  * @param transformer A callback function used to convert properties.
  * @returns any
  *
@@ -90,11 +90,11 @@ export function toDeepConvertProperty(data: any, transformer: Method<string>): a
   return result;
 }
 /**
- * Formatting properties of the object structure in the data.
+ * Formatting properties of the object in the data.
  *
  * @see [transformer(camelCase)](https://lodash.com/docs/#camelCase)
  *
- * @param data The data source.
+ * @param data The source of data conversion.
  * @returns any
  *
  * @publicApi
@@ -105,11 +105,11 @@ export function toDeepCamelCase(data: any): any {
   return toDeepConvertProperty(data, camelCase);
 }
 /**
- * Formatting properties of the object structure in the data.
+ * Formatting properties of the object in the data.
  *
  * @see [transformer(snakeCase)](https://lodash.com/docs/#snakeCase)
  *
- * @param data The data source.
+ * @param data The source of data conversion.
  * @returns any
  *
  * @publicApi
@@ -120,11 +120,11 @@ export function toDeepSnakeCase(data: any): any {
   return toDeepConvertProperty(data, snakeCase);
 }
 /**
- * Formatting properties of the object structure in the data.
+ * Formatting properties of the object in the data.
  *
  * @see [transformer(capitalize)](https://lodash.com/docs/#capitalize)
  *
- * @param data The data source.
+ * @param data The source of data conversion.
  * @returns any
  *
  * @publicApi
@@ -135,11 +135,11 @@ export function toDeepCapitalize(data: any): any {
   return toDeepConvertProperty(data, capitalize);
 }
 /**
- * Formatting properties of the object structure in the data.
+ * Formatting properties of the object in the data.
  *
  * @see [transformer(kebabCase)](https://lodash.com/docs/#kebabCase)
  *
- * @param data The data source.
+ * @param data The source of data conversion.
  * @returns any
  *
  * @publicApi
@@ -150,11 +150,11 @@ export function toDeepKebabCase(data: any): any {
   return toDeepConvertProperty(data, kebabCase);
 }
 /**
- * Formatting properties of the object structure in the data.
+ * Formatting properties of the object in the data.
  *
  * @see [transformer(lowerCase)](https://lodash.com/docs/#lowerCase)
  *
- * @param data The data source.
+ * @param data The source of data conversion.
  * @returns any
  *
  * @publicApi
@@ -165,11 +165,11 @@ export function toDeepLowerCase(data: any): any {
   return toDeepConvertProperty(data, lowerCase);
 }
 /**
- * Formatting properties of the object structure in the data.
+ * Formatting properties of the object in the data.
  *
  * @see [transformer(lowerFirst)](https://lodash.com/docs/#lowerFirst)
  *
- * @param data The data source.
+ * @param data The source of data conversion.
  * @returns any
  *
  * @publicApi
@@ -180,11 +180,11 @@ export function toDeepLowerFirst(data: any): any {
   return toDeepConvertProperty(data, lowerFirst);
 }
 /**
- * Formatting properties of the object structure in the data.
+ * Formatting properties of the object in the data.
  *
  * @see [transformer(upperCase)](https://lodash.com/docs/#upperCase)
  *
- * @param data The data source.
+ * @param data The source of data conversion.
  * @returns any
  *
  * @publicApi
@@ -195,11 +195,11 @@ export function toDeepUpperCase(data: any): any {
   return toDeepConvertProperty(data, upperCase);
 }
 /**
- * Formatting properties of the object structure in the data.
+ * Formatting properties of the object in the data.
  *
  * @see [transformer(upperFirst)](https://lodash.com/docs/#upperFirst)
  *
- * @param data The data source.
+ * @param data The source of data conversion.
  * @returns any
  *
  * @publicApi
@@ -210,11 +210,11 @@ export function toDeepUpperFirst(data: any): any {
   return toDeepConvertProperty(data, upperFirst);
 }
 /**
- * Formatting properties of the object structure in the data.
+ * Formatting properties of the object in the data.
  *
  * @see [transformer(toLower)](https://lodash.com/docs/#toLower)
  *
- * @param data The data source.
+ * @param data The source of data conversion.
  * @returns any
  *
  * @publicApi
@@ -225,11 +225,11 @@ export function toDeepLower(data: any): any {
   return toDeepConvertProperty(data, toLower);
 }
 /**
- * Formatting properties of the object structure in the data.
+ * Formatting properties of the object in the data.
  *
  * @see [transformer(toUpper)](https://lodash.com/docs/#toUpper)
  *
- * @param data The data source.
+ * @param data The source of data conversion.
  * @returns any
  *
  * @publicApi

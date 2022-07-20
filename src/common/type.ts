@@ -1,4 +1,8 @@
-/** The function method. */
+/**
+ * The method of functions.
+ */
 export type Method<T = any> = (...args: any[]) => T;
-/** The promise method. */
+/**
+ * The method of promises.
+ */
 export type PromiseMethod<T = any> = (...args: any[]) => Promise<T>;

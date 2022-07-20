@@ -1,25 +1,29 @@
 import { Method } from './type';
 
-/**  The typescript class. */
+/**
+ * The class for typescript.
+ */
 export interface Class<T = any> extends Function {
   new (...args: any[]): T;
 }
-/** Conversion function options. */
+/**
+ * Choices for conversion functions.
+ */
 export interface ConvertOptions {
   /**
-   * This value is returned when the incoming value does not match expectations.
+   * When the received value does not correspond to expectations, this value is returned.
    *
    * @default null
    */
   replaced?: any;
   /**
-   * If the result of the conditional validation function execution is true, the conversion is performed.
+   * The conversion is carried out if the outcome of the conditional validation function execution is true.
    *
    * @empale (num: number) => num > 0
    */
   condition?: Method;
   /**
-   * The function that performs the transformation.
+   * The process that carries out the transition.
    *
    * @empale (data: any) => Number(data)
    */

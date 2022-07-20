@@ -5,11 +5,9 @@ import { isEmpty, isNil } from 'lodash';
 import { ConvertOptions } from '../common';
 
 /**
- * The function that performs the transformation.
+ * The process that carries out the transition.
  *
- * There are two outcomes that return the `replaced`.
- *
- * Either the condition fails and `replaced` is passed in, or the value is null.
+ * @tips There are two outcomes that return the `replaced`: `replaced` is entered and either the condition fails or the value is null
  *
  * @param data Data that needs to be transformed.
  * @param options Options in transformation processing.

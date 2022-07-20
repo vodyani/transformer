@@ -5,14 +5,13 @@ import { Class } from '../common';
 import { toDeepMerge } from './object';
 
 /**
- * This method transforms a javascript object to instance of specific class.
+ * This technique turns an object into an instance of a particular class.
  *
  * @see [ClassTransformOptions](https://github.com/typestack/class-transformer#advanced-usage)
  *
- * @param type The typescript class.
- * @param data The typescript object.
- * @param options Options to be passed during transformation, `excludeExtraneousValues` is enabled by default.
- * @returns plainToClass `class-transformer`.`plainToClass` result.
+ * @param type The intended class for conversion.
+ * @param data The source of data conversion.
+ * @param options The class-transformer options. (`excludeExtraneousValues` is enabled by default)
  *
  * @publicApi
  */
