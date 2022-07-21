@@ -452,6 +452,26 @@ A transformer is passed in after the function has completed execution to change 
 
 **Example**
 
+```ts
+import { ResultTransformer, toString, toNumber } from '@vodyani/transformer';
+
+class Demo {
+  @ResultTransformer(toString)
+  public getName() {
+    return null;
+  }
+
+  @ResultTransformer(toNumber)
+  public async getRemoteName() {
+    return null;
+  }
+}
+
+const demo = new Demo();
+
+demo.getName(); // ''
+await demo.getRemoteName(); // 0
+```
 
 ### ArgumentTransformer
 
@@ -465,6 +485,24 @@ The function's arguments are modified using the passed transformer before the fu
 
 **Example**
 
+```ts
+import { ArgumentTransformer } from '@vodyani/transformer';
+
+function fn(...args: any[]) {
+  return args.map(toNumber);
+}
+
+class Demo {
+  @ArgumentTransformer(fn)
+  public returnAge(age: number) {
+    return age;
+  }
+}
+
+const demo = new Demo();
+
+demo.returnAge('1' as any); // 1
+```
 
 ## Team
 

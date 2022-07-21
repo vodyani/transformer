@@ -48,6 +48,7 @@ describe('convert', () => {
         return null;
       }
     }
+
     const demo = new Demo();
 
     expect(demo.getName()).toBe('');
