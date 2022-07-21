@@ -15,7 +15,7 @@ export interface ConvertOptions {
    *
    * @default null
    */
-  replaced?: any;
+  default?: any;
   /**
    * The conversion is carried out if the outcome of the conditional validation function execution is true.
    *

@@ -2,8 +2,6 @@ import { ClassTransformOptions, plainToClass } from 'class-transformer';
 
 import { Class } from '../common';
 
-import { toDeepMerge } from './object';
-
 /**
  * This technique turns an object into an instance of a particular class.
  *
@@ -16,6 +14,9 @@ import { toDeepMerge } from './object';
  * @publicApi
  */
 export function toAssemble(type: Class, data?: object, options?: ClassTransformOptions) {
-  const AssembleOptions = toDeepMerge({ excludeExtraneousValues: true }, options);
-  return plainToClass(type, (data || {}), AssembleOptions);
+  return plainToClass(
+    type,
+    data || {},
+    { excludeExtraneousValues: true, ...(options || {}) },
+  );
 }

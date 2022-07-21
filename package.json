@@ -63,9 +63,7 @@
     ]
   },
   "dependencies": {
-    "@vodyani/utils": "1.2.0",
     "class-transformer": "0.5.1",
-    "deepmerge-ts": "4.2.1",
     "lodash": "4.17.21",
     "reflect-metadata": "0.1.13"
   },

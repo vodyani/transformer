@@ -21,7 +21,6 @@ npm install @vodyani/transformer
 
 - [⛰ Class transformation](#class-transformer-usage)
 - [🛫 Convert transformation](#convert-transformer-usage)
-- [📚 Object transformation](#object-transformer-usage)
 
 ## Class transformer usage
 
@@ -120,7 +119,7 @@ This technique turns an object into an instance of a particular class.
 **Example**
 
 ```ts
-import { Expose } from '@vodyani/transformer'
+import { Expose, toAssemble } from '@vodyani/transformer'
 
 class User {
   @Expose()
@@ -152,7 +151,7 @@ toAssemble(Customer, { name: 'demo' }) // { name: 'demo' }
 
 Following the function's successful completion, the result is automatically loaded using the class that was supplied.
 
-**tips**
+**Tips:**
 
 This decorator should only be used if the return value is specified 🤔
 
@@ -167,7 +166,7 @@ This decorator should only be used if the return value is specified 🤔
 **Example**
 
 ```ts
-import { Expose } from '@vodyani/transformer'
+import { Assemble, Expose, TransformValue, toNumber } from '@vodyani/transformer'
 
 class Order {
   @Expose() @TransformValue((id: number) => toNumber(id, 0))
@@ -192,8 +191,8 @@ The transformation decorator of the data. `@TransformValue` actually calls the [
 
 |param|type|description|
 |:-:|:-:|:-:|
-|`transformer`|`Method`|*the process that carries out the transition.*|
-|`...args`|`any[]`|argument|
+|`transformer`|`Method`|*The process that carries out the transition.*|
+|`...args`|`any[]`|*The transformer argument.*|
 
 **Example**
 
@@ -263,11 +262,209 @@ class Library {
 
 ## Convert transformer usage
 
-📚 building ...
+|Features|Type|Description|
+|:-:|:-:|:-:|
+|[toConvert](#toconvert)|method|The process that carries out the transition.|
+|[toString](#tostring)|method|Convert data to string.|
+|[toNumber](#tonumber)|method|Convert data to number.|
+|[toBuffer](#tonumber)|method|Convert `Buffer` data to `Stream`.|
+|[toStream](#tostream)|method|Convert `Stream` data to `Buffer`.|
+|[ResultTransformer](#resulttransformer)|decorator|A transformer is passed in after the function has completed execution to change the function's output.|
+|[ArgumentTransformer](#argumenttransformer)|The function's arguments are modified using the passed transformer before the function is called.|
 
-## Object transformer usage
 
-📚 building ...
+### toConvert
+
+The process that carries out the transition.
+
+**Tips:**
+
+- There are two outcomes that return the `default`: `default` is entered and either the condition fails or the value is null.
+- This is a higher-order method that you usually need to use in conjunction with other utility functions. 😛
+
+|param|type|description|
+|:-:|:-:|:-:|
+|`data`|`any`|*Data that needs to be transformed.*|
+|`options`|`ConvertOptions`|*Options in transformation processing.*|
+
+```ts
+export interface ConvertOptions {
+  /**
+   * When the received value does not correspond to expectations, this value is returned.
+   *
+   * @default null
+   */
+  default?: any;
+  /**
+   * The conversion is carried out if the outcome of the conditional validation function execution is true.
+   *
+   * @empale (num: number) => num > 0
+   */
+  condition?: Method;
+  /**
+   * The process that carries out the transition.
+   *
+   * @empale (data: any) => Number(data)
+   */
+  transformer?: Method;
+}
+```
+
+**Return**
+
+`T` | `any`
+
+**Example**
+
+```ts
+import { toConvert } from '@vodyani/transformer';
+
+toConvert(undefined, { default: 1 }); // 1
+toConvert(null); // null
+toConvert(1, { default: 10 }); // 1
+toConvert(1); // 1
+```
+
+**How do you build a transformation function ↓**
+
+```ts
+import { toConvert } from '@vodyani/transformer';
+
+function toString(data: any, defaultValue = ''): string {
+  return toConvert(data, {
+    transformer: String,
+    default: defaultValue,
+    condition: (data) => !isNil(data) && !isEmpty(String(data)),
+  });
+}
+
+toString(undefined, '1'); // '1'
+toString(null); // ''
+```
+
+### toString
+
+Convert data to string.
+
+**Params**
+
+|param|type|description|
+|:-:|:-:|:-:|
+|`data`|`any`|*Data that needs to be transformed.*|
+|`defaultValue`|`string`|*This value is returned when the incoming value does not match expectations.*|
+
+**Return**
+
+`string`
+
+**Example**
+
+```ts
+import { toString } from '@vodyani/transformer';
+
+toString(undefined, '1'); // '1'
+toString(null); // ''
+toString(1, '10'); // '1'
+toString('1', '10'); // '1'
+```
+
+### toNumber
+
+Convert data to number.
+
+**Params**
+
+|param|type|description|
+|:-:|:-:|:-:|
+|`data`|`any`|*Data that needs to be transformed.*|
+|`defaultValue`|`number`|*This value is returned when the incoming value does not match expectations.*|
+
+**Return**
+
+`number`
+
+**Example**
+
+```ts
+import { toNumber } from '@vodyani/transformer';
+
+toNumber(undefined, 1); // 1
+toNumber(null); // 0
+toNumber(1, 10); // 1
+toNumber('1', 10); // 1
+toNumber(Number('test'), 1); // 1
+```
+
+### toBuffer
+
+Convert `Stream` data to `Buffer`.
+
+**Params**
+
+|param|type|description|
+|:-:|:-:|:-:|
+|`stream`|`Stream`|*The stream data.*|
+
+**Return**
+
+`Promise<Buffer>`
+
+**Example**
+
+```ts
+import { toBuffer } from '@vodyani/transformer';
+
+await toBuffer(data) // => stream data
+```
+
+### toStream
+
+Convert `Buffer` data to `Stream`.
+
+**Params**
+
+|param|type|description|
+|:-:|:-:|:-:|
+|`buffer`|`Buffer`|*The buffer data.*|
+|`encoding`|`ascii`/`utf8`/`utf-8`/`utf16le`/`ucs2`/`ucs-2`/`base64`/`base64url`/`latin1`/`binary`/`hex`|*The encoding type.*|
+
+**Return**
+
+`Promise<Duplex>`
+
+**Example**
+
+```ts
+import { toStream } from '@vodyani/transformer';
+
+await toStream(data) // => buffer data
+```
+
+### ResultTransformer
+
+A transformer is passed in after the function has completed execution to change the function's output.
+
+**Params**
+
+|param|type|description|
+|:-:|:-:|:-:|
+|`transformer`|`Function`|*The process that carries out the transition.*|
+
+**Example**
+
+
+### ArgumentTransformer
+
+**Params**
+
+The function's arguments are modified using the passed transformer before the function is called.
+
+|param|type|description|
+|:-:|:-:|:-:|
+|`transformer`|`Function`|*The process that carries out the transition.*|
+
+**Example**
+
 
 ## Team
 
