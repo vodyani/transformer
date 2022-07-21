@@ -270,7 +270,7 @@ class Library {
 |[toBuffer](#tonumber)|method|Convert `Buffer` data to `Stream`.|
 |[toStream](#tostream)|method|Convert `Stream` data to `Buffer`.|
 |[ResultTransformer](#resulttransformer)|decorator|A transformer is passed in after the function has completed execution to change the function's output.|
-|[ArgumentTransformer](#argumenttransformer)|The function's arguments are modified using the passed transformer before the function is called.|
+|[ArgumentTransformer](#argumenttransformer)|decorator|The function's arguments are modified using the passed transformer before the function is called.|
 
 
 ### toConvert
