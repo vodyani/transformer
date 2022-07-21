@@ -1,7 +1,7 @@
 {
   "name": "@vodyani/transformer",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "0.6.0-beta.1",
   "author": "ChoGathK",
   "description": "⚗ transformer offered simple-to-use decorators and conversion mechanisms.",
   "homepage": "https://github.com/vodyani/transformer#readme",
