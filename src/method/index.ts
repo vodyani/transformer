@@ -1,3 +1,2 @@
-export * from './assemble';
+export * from './class';
 export * from './convert';
-export * from './deep';

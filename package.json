@@ -1,26 +1,23 @@
 {
   "name": "@vodyani/transformer",
   "license": "MIT",
-  "version": "0.5.3",
+  "version": "0.6.0-beta.1",
   "author": "ChoGathK",
-  "description": "🗞 provides easy to use transform methods and decorators.",
+  "description": "⚗ transformer offered simple-to-use decorators and conversion mechanisms.",
   "homepage": "https://github.com/vodyani/transformer#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vodyani/transformer.git"
   },
+  "bugs": {
+    "url": "https://github.com/vodyani/transformer/issues"
+  },
   "keywords": [
     "vodyani",
     "nodejs",
     "transformer",
-    "conversion",
-    "javascript",
-    "typescript",
     "npm-package"
   ],
-  "bugs": {
-    "url": "https://github.com/vodyani/transformer/issues"
-  },
   "files": [
     "package.json",
     "README.MD",
@@ -29,25 +26,27 @@
   ],
   "main": "dist/index.js",
   "scripts": {
-    "patch": "npm version patch",
-    "minor": "npm version minor",
-    "major": "npm version major",
-    "install:all": "npm i && npm i @vodyani/eslint-config -D && npx husky install",
+    "local": "npm i && npm i @vodyani/eslint-config -D && npx husky install",
     "build": "rm -rf dist && tsc",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "lint": "eslint ./src ./test && tsc",
     "lint:fix": "eslint --fix --ext .ts src/ test/",
     "lint:html-report": "eslint ./src ./test -f html -o eslint-report.html",
-    "lint:json-report": "eslint ./src ./test -f json -o eslint-report.json"
+    "lint:json-report": "eslint ./src ./test -f json -o eslint-report.json",
+    "release": "npx semantic-release"
   },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
+  "publishConfig": {
+    "access": "public"
   },
   "eslintConfig": {
     "extends": "@vodyani"
+  },
+  "release": {
+    "extends": "@vodyani/semantic-release"
+  },
+  "commitlint": {
+    "extends": "@commitlint/config-conventional"
   },
   "jest": {
     "testEnvironment": "node",
@@ -65,21 +64,23 @@
   },
   "dependencies": {
     "class-transformer": "0.5.1",
-    "reflect-metadata": "0.1.13",
-    "lodash": "4.17.21"
+    "lodash": "4.17.21",
+    "reflect-metadata": "0.1.13"
   },
   "peerDependencies": {
     "class-transformer": "0.5.1",
     "reflect-metadata": "0.1.13"
   },
   "devDependencies": {
-    "@commitlint/cli": "16.2.3",
-    "@commitlint/config-conventional": "16.2.1",
-    "@nestjs/swagger": "^5.2.1",
+    "@commitlint/cli": "16.3.0",
+    "@commitlint/config-conventional": "16.2.4",
+    "@nestjs/swagger": "5.2.1",
     "@types/jest": "27.4.1",
     "@types/lodash": "4.14.182",
     "@types/node": "16.11.28",
-    "@vodyani/eslint-config": "^1.0.9",
+    "@types/supertest": "2.0.12",
+    "@vodyani/eslint-config": "^1.0.10",
+    "@vodyani/semantic-release": "1.1.1",
     "husky": "7.0.4",
     "jest": "27.5.1",
     "ts-jest": "27.1.4",
