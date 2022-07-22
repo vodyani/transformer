@@ -54,7 +54,7 @@ export function toNumber(data: any, defaultValue = 0): number {
   return toConvert(data, {
     transformer: Number,
     default: defaultValue,
-    condition: (data) => !isNil(data) && !isNaN(Number(data)),
+    condition: (data) => !isNil(data) && Number.isSafeInteger(Number(data)),
   });
 }
 /**
