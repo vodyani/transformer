@@ -1,7 +1,7 @@
 {
   "name": "@vodyani/transformer",
   "license": "MIT",
-  "version": "0.6.0-beta.1",
+  "version": "0.6.0",
   "author": "ChoGathK",
   "description": "⚗ transformer offered simple-to-use decorators and conversion mechanisms.",
   "homepage": "https://github.com/vodyani/transformer#readme",
@@ -78,7 +78,6 @@
     "@types/jest": "27.4.1",
     "@types/lodash": "4.14.182",
     "@types/node": "16.11.28",
-    "@types/supertest": "2.0.12",
     "@vodyani/eslint-config": "^1.0.10",
     "@vodyani/semantic-release": "1.1.1",
     "husky": "7.0.4",
