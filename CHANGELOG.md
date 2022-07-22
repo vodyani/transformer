@@ -1,3 +1,10 @@
+## [0.6.1](https://github.com/vodyani/transformer/compare/v0.6.0...v0.6.1) (2022-07-22)
+
+
+### Bug Fixes
+
+* to number condition ([198bf54](https://github.com/vodyani/transformer/commit/198bf540280fc8edff41f03924bbe90062baafff))
+
 ## [0.6.1-beta.1](https://github.com/vodyani/transformer/compare/v0.6.0...v0.6.1-beta.1) (2022-07-22)
 
 
